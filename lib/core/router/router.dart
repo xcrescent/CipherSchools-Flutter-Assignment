@@ -7,9 +7,21 @@ class AppRouter extends $AppRouter {
   @override
   late final List<AutoRoute> routes = [
     AutoRoute(
-      page: CounterRoute.page,
+      page: SplashRoute.page,
       path: '/',
       initial: true,
+    ),
+    AutoRoute(
+      page: GettingStartedRoute.page,
+      path: '/getting-started',
+    ),
+    AutoRoute(
+      page: AuthRoute.page,
+      path: '/auth',
+    ),
+    AutoRoute(
+      page: HomeRoute.page,
+      path: '/home',
     ),
   ];
 }
