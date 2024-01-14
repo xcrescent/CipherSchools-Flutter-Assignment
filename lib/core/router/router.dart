@@ -20,8 +20,12 @@ class AppRouter extends $AppRouter {
       path: '/auth',
     ),
     AutoRoute(
-      page: HomeRoute.page,
-      path: '/home',
+      page: NavigationRoute.page,
+      path: '/navigation',
     ),
+    // AutoRoute(
+    //   page: HomeRoute.page,
+    //   path: '/home',
+    // ),
   ];
 }

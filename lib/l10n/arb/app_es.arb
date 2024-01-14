@@ -3,5 +3,82 @@
     "counterAppBarTitle": "Contador",
     "@counterAppBarTitle": {
         "description": "Texto mostrado en la AppBar de la página del contador"
-    }
+    },
+    "lbl_by_open_source": "By\nOpen Source ",
+    "lbl_cipherx": "CipherX",
+    "lbl_community": "Community",
+    "msg_by_open_source_community": "By\nOpen Source Community",
+
+    "lbl_cipherx2": "CipherX.",
+    "lbl_to": "to ",
+    "lbl_welcome": "Welcome",
+    "lbl_welcome_to": "Welcome to  ",
+    "msg_the_best_way_to": "The best way to track your expenses.",
+
+    "lbl_email": "Email",
+    "lbl_name": "Name",
+    "lbl_or_with": "Or with",
+    "lbl_password": "Password",
+    "lbl_sign_up": "Sign Up",
+    "msg_already_have_an": "Already have an account? Login",
+    "msg_by_signing_up_you":
+    "By signing up, you agree to the Terms of Service and Privacy Policy",
+    "msg_sign_up_with_google": "Sign Up with Google",
+
+    "lbl_03_30_pm": "03:30 PM",
+    "lbl_07_30_pm": "07:30 PM",
+    "lbl_1000": "- ₹1000",
+    "lbl_10_00_am": "10:00 AM",
+    "lbl_120": "- ₹120",
+    "lbl_32": "- ₹32",
+    "lbl_499": "- ₹499",
+    "lbl_buy_a_ramen": "Buy a ramen",
+    "lbl_food": "Food",
+    "lbl_see_all": "See All",
+    "lbl_shopping": "Shopping",
+    "lbl_subscription": "Subscription",
+    "lbl_travel": "Travel",
+    "msg_buy_some_grocery": "Buy some grocery",
+    "msg_chandigarh_to_de": "Chandigarh to De...",
+    "msg_disney_annual": "Disney+ Annual..",
+    "msg_recent_transaction": "Recent Transaction",
+
+    "lbl_12000": "₹12000",
+    "lbl_38000": "₹38000",
+    "lbl_50000": "₹50000",
+    "lbl_account_balance": "Account Balance",
+    "lbl_expenses": "Expenses",
+    "lbl_month": "Month",
+    "lbl_october": "October",
+    "lbl_today": "Today",
+    "lbl_week": "Week",
+    "lbl_year": "Year",
+
+    "lbl_budget": "Budget", "lbl_home": "Home", "lbl_profile": "Profile",
+    "lbl_transaction": "Transaction",
+
+    "lbl_expense": "Expense", "msg_write_a_description": "Write a description",
+
+    "lbl_account": "Account",
+    "lbl_export_data": "Export Data",
+    "lbl_khushi_sharma": "Khushi Sharma",
+    "lbl_logout": "Logout",
+    "lbl_settings": "Settings",
+    "lbl_username": "Username",
+
+    "lbl": "₹",
+    "lbl_0": "0",
+    "lbl_category": "Category",
+    "lbl_continue": "Continue",
+    "lbl_description": "Description",
+    "lbl_how_much": "How much?",
+    "lbl_income": "Income",
+    "lbl_wallet": "Wallet",
+
+    "msg_network_err": "Network Error",
+    "msg_something_went_wrong": "Something Went Wrong!",
+
+    "err_msg_please_enter_valid_text": "Please enter valid text",
+    "err_msg_please_enter_valid_email": "Please enter valid email",
+    "err_msg_please_enter_valid_password": "Please enter valid password"
 }

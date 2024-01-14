@@ -12,45 +12,63 @@ import 'package:assignment/features/auth/view/auth_page.dart' as _i1;
 import 'package:assignment/features/getting_started/view/getting_started_page.dart'
     deferred as _i2;
 import 'package:assignment/features/home/view/home_page.dart' deferred as _i3;
-import 'package:assignment/features/splash/view/splash_page.dart'
+import 'package:assignment/features/navigation/view/navigation_page.dart'
     deferred as _i4;
-import 'package:auto_route/auto_route.dart' as _i5;
+import 'package:assignment/features/profile/view/profle_page.dart' as _i5;
+import 'package:assignment/features/splash/view/splash_page.dart'
+    deferred as _i6;
+import 'package:auto_route/auto_route.dart' as _i7;
 
-abstract class $AppRouter extends _i5.RootStackRouter {
+abstract class $AppRouter extends _i7.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i5.PageFactory> pagesMap = {
+  final Map<String, _i7.PageFactory> pagesMap = {
     AuthRoute.name: (routeData) {
-      return _i5.AutoRoutePage<dynamic>(
+      return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i1.AuthPage(),
       );
     },
     GettingStartedRoute.name: (routeData) {
-      return _i5.AutoRoutePage<dynamic>(
+      return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i5.DeferredWidget(
+        child: _i7.DeferredWidget(
           _i2.loadLibrary,
           () => _i2.GettingStartedPage(),
         ),
       );
     },
     HomeRoute.name: (routeData) {
-      return _i5.AutoRoutePage<dynamic>(
+      return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i5.DeferredWidget(
+        child: _i7.DeferredWidget(
           _i3.loadLibrary,
           () => _i3.HomePage(),
         ),
       );
     },
-    SplashRoute.name: (routeData) {
-      return _i5.AutoRoutePage<dynamic>(
+    NavigationRoute.name: (routeData) {
+      return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i5.DeferredWidget(
+        child: _i7.DeferredWidget(
           _i4.loadLibrary,
-          () => _i4.SplashPage(),
+          () => _i4.NavigationPage(),
+        ),
+      );
+    },
+    ProfleRoute.name: (routeData) {
+      return _i7.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i5.ProflePage(),
+      );
+    },
+    SplashRoute.name: (routeData) {
+      return _i7.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i7.DeferredWidget(
+          _i6.loadLibrary,
+          () => _i6.SplashPage(),
         ),
       );
     },
@@ -59,8 +77,8 @@ abstract class $AppRouter extends _i5.RootStackRouter {
 
 /// generated route for
 /// [_i1.AuthPage]
-class AuthRoute extends _i5.PageRouteInfo<void> {
-  const AuthRoute({List<_i5.PageRouteInfo>? children})
+class AuthRoute extends _i7.PageRouteInfo<void> {
+  const AuthRoute({List<_i7.PageRouteInfo>? children})
       : super(
           AuthRoute.name,
           initialChildren: children,
@@ -68,13 +86,13 @@ class AuthRoute extends _i5.PageRouteInfo<void> {
 
   static const String name = 'AuthRoute';
 
-  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
+  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.GettingStartedPage]
-class GettingStartedRoute extends _i5.PageRouteInfo<void> {
-  const GettingStartedRoute({List<_i5.PageRouteInfo>? children})
+class GettingStartedRoute extends _i7.PageRouteInfo<void> {
+  const GettingStartedRoute({List<_i7.PageRouteInfo>? children})
       : super(
           GettingStartedRoute.name,
           initialChildren: children,
@@ -82,13 +100,13 @@ class GettingStartedRoute extends _i5.PageRouteInfo<void> {
 
   static const String name = 'GettingStartedRoute';
 
-  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
+  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i3.HomePage]
-class HomeRoute extends _i5.PageRouteInfo<void> {
-  const HomeRoute({List<_i5.PageRouteInfo>? children})
+class HomeRoute extends _i7.PageRouteInfo<void> {
+  const HomeRoute({List<_i7.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           initialChildren: children,
@@ -96,13 +114,41 @@ class HomeRoute extends _i5.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
+  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i4.SplashPage]
-class SplashRoute extends _i5.PageRouteInfo<void> {
-  const SplashRoute({List<_i5.PageRouteInfo>? children})
+/// [_i4.NavigationPage]
+class NavigationRoute extends _i7.PageRouteInfo<void> {
+  const NavigationRoute({List<_i7.PageRouteInfo>? children})
+      : super(
+          NavigationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NavigationRoute';
+
+  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i5.ProflePage]
+class ProfleRoute extends _i7.PageRouteInfo<void> {
+  const ProfleRoute({List<_i7.PageRouteInfo>? children})
+      : super(
+          ProfleRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfleRoute';
+
+  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i6.SplashPage]
+class SplashRoute extends _i7.PageRouteInfo<void> {
+  const SplashRoute({List<_i7.PageRouteInfo>? children})
       : super(
           SplashRoute.name,
           initialChildren: children,
@@ -110,5 +156,5 @@ class SplashRoute extends _i5.PageRouteInfo<void> {
 
   static const String name = 'SplashRoute';
 
-  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
+  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
 }

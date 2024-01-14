@@ -1,7 +1,3 @@
-import 'package:flash/flash_helper.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:assignment/core/router/auto_route_observer.dart';
 import 'package:assignment/core/router/router_pod.dart';
 import 'package:assignment/core/theme/app_theme.dart';
@@ -11,6 +7,10 @@ import 'package:assignment/shared/helper/global_helper.dart';
 import 'package:assignment/shared/pods/locale_pod.dart';
 import 'package:assignment/shared/widget/no_internet_widget.dart';
 import 'package:assignment/shared/widget/responsive_wrapper.dart';
+import 'package:flash/flash_helper.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 ///This class holds Material App or Cupertino App
 ///with routing,theming and locale setup .
@@ -34,7 +34,7 @@ class _AppState extends ConsumerState<App> with GlobalHelper {
       title: 'Example App',
       theme: Themes.theme,
       darkTheme: Themes.darkTheme,
-      themeMode: currentTheme,
+      themeMode: ThemeMode.light,
       routerConfig: approuter.config(
         navigatorObservers: () => [
           RouterObserver(),
@@ -56,7 +56,8 @@ class _AppState extends ConsumerState<App> with GlobalHelper {
           final mediaquery = MediaQuery.of(context);
           child = MediaQuery(
             data: mediaquery.copyWith(
-              textScaler: TextScaler.linear(mediaquery.textScaleFactor.clamp(0, 1.5)),
+              textScaler:
+                  TextScaler.linear(mediaquery.textScaleFactor.clamp(0, 1.5)),
             ),
             child: child,
           );

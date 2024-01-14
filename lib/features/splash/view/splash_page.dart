@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 )
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 2), () {

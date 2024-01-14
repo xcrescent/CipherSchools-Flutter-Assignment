@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -131,61 +130,71 @@ class AuthPage extends ConsumerWidget {
             ),
           ),
           const SizedBox(
-            height: 18,
+            height: 8,
           ),
-          Row(
-            children: [
-              const Checkbox(
-                focusColor: Color(0xff7F3DFF),
-                hoverColor: Color(0xff7F3DFF),
-                activeColor: Color(0xff7F3DFF),
-                side: BorderSide(
-                  width: 1,
-                  color: Color(0xff7F3DFF),
-                  style: BorderStyle.solid,
-                ),
-                value: false,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(4),
-                  ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                const Checkbox(
+                  focusColor: Color(0xff7F3DFF),
+                  hoverColor: Color(0xff7F3DFF),
+                  activeColor: Color(0xff7F3DFF),
                   side: BorderSide(
                     width: 1,
                     color: Color(0xff7F3DFF),
                     style: BorderStyle.solid,
                   ),
-                ),
-                onChanged: null,
-                checkColor: Color(0xff7F3DFF),
-              ),
-              RichText(
-                overflow: TextOverflow.ellipsis,
-                softWrap: true,
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: [
-                    TextSpan(
-                      text: "By signing up, you agree to the ",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: GoogleFonts.inter().fontFamily,
-                        color: Colors.black,
-                      ),
+                  value: false,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(4),
                     ),
-                    TextSpan(
-                      text: "Terms of Service and Privacy Policy",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: GoogleFonts.inter().fontFamily,
-                        color: const Color(0xff7F3DFF),
-                      ),
+                    side: BorderSide(
+                      width: 1,
+                      color: Color(0xff7F3DFF),
+                      style: BorderStyle.solid,
                     ),
-                  ],
+                  ),
+                  onChanged: null,
+                  checkColor: Color(0xff7F3DFF),
                 ),
-              ),
-            ],
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - 80,
+                  child: RichText(
+                    // overflow: TextOverflow.ellipsis,
+                    softWrap: true,
+                    text: TextSpan(
+                      style: DefaultTextStyle.of(context).style,
+                      children: [
+                        TextSpan(
+                          text: "By signing up, you agree to the ",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: GoogleFonts.inter().fontFamily,
+                            color: Colors.black,
+                          ),
+                        ),
+                        TextSpan(
+                          text: "Terms of Service and Privacy Policy",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: GoogleFonts.inter().fontFamily,
+                            color: const Color(0xff7F3DFF),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 4,
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -193,68 +202,102 @@ class AuthPage extends ConsumerWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              minimumSize: const Size(343, 48),
+              minimumSize: Size(MediaQuery.of(context).size.width - 40, 48),
             ),
-            onPressed: () {},
-            child: const Text(
+            onPressed: () {
+              context.router.pushNamed("/navigation");
+            },
+            child: Text(
               "Sign Up",
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-                color: Color(0xFFFCFCFC),
+                color: const Color(0xFFFCFCFC),
+                fontFamily: GoogleFonts.inter().fontFamily,
               ),
             ),
           ),
-          const Text(
+          const SizedBox(
+            height: 8,
+          ),
+          Text(
             "Or with",
             style: TextStyle(
               fontSize: 14,
+              fontFamily: GoogleFonts.inter().fontFamily,
               fontWeight: FontWeight.w700,
+              color: const Color(0xff91919F),
             ),
+          ),
+          const SizedBox(
+            height: 8,
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
+              elevation: 0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              minimumSize: const Size(343, 48),
+              backgroundColor: const Color(0xffFFFFFF),
+              minimumSize: Size(MediaQuery.of(context).size.width - 40, 48),
+              maximumSize: Size(MediaQuery.of(context).size.width - 40, 48),
+              side: const BorderSide(
+                width: 1,
+                color: Color(0xffE0E0E0),
+                style: BorderStyle.solid,
+              ),
             ),
             onPressed: () {},
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
                   "assets/images/google.png",
                   width: 24,
                   height: 24,
                 ),
-                const Text(
+                const SizedBox(
+                  width: 16,
+                ),
+                Text(
                   "Sign Up with Google",
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xFFFCFCFC),
+                    fontFamily: GoogleFonts.inter().fontFamily,
+                    color: const Color(0xFF212325),
                   ),
                 ),
               ],
             ),
           ),
-          const Text(
-            "Already have an account? Login",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-            ),
+          const SizedBox(
+            height: 8,
           ),
-          const Row(
-            children: [
-              Text(
-                "Sign Up",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
+          RichText(
+            text: TextSpan(
+              style: DefaultTextStyle.of(context).style,
+              children: [
+                TextSpan(
+                  text: "Already have an account? ",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: GoogleFonts.inter().fontFamily,
+                    color: const Color(0xff91919F),
+                  ),
                 ),
-              )
-            ],
+                TextSpan(
+                  text: "Login",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: GoogleFonts.inter().fontFamily,
+                    color: const Color(0xff7F3DFF),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
