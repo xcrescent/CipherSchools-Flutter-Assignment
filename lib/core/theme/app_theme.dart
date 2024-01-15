@@ -63,7 +63,7 @@ class Themes {
   //       // fontFamily: GoogleFonts.getFont('Lato').fontFamily,
   //     );
 
-  static ThemeData get theme => ThemeData.light().copyWith(
+  static ThemeData get theme => ThemeData.light(useMaterial3: false).copyWith(
         colorScheme:
             FlexColorScheme.light(scheme: FlexScheme.brandBlue).toScheme,
         appBarTheme: const AppBarTheme(

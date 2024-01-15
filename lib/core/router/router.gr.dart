@@ -57,10 +57,10 @@ abstract class $AppRouter extends _i7.RootStackRouter {
         ),
       );
     },
-    ProfleRoute.name: (routeData) {
+    ProfileRoute.name: (routeData) {
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.ProflePage(),
+        child: const _i5.ProfilePage(),
       );
     },
     SplashRoute.name: (routeData) {
@@ -132,15 +132,15 @@ class NavigationRoute extends _i7.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.ProflePage]
-class ProfleRoute extends _i7.PageRouteInfo<void> {
-  const ProfleRoute({List<_i7.PageRouteInfo>? children})
+/// [_i5.ProfilePage]
+class ProfileRoute extends _i7.PageRouteInfo<void> {
+  const ProfileRoute({List<_i7.PageRouteInfo>? children})
       : super(
-          ProfleRoute.name,
+          ProfileRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'ProfleRoute';
+  static const String name = 'ProfileRoute';
 
   static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
 }

@@ -6,4 +6,6 @@ class R {
 
   /// ![preview](file://C:\Users\shree\Documents\GitHub\assignment\assets\anim\nointernet.riv)
   static const String ASSETS_ANIM_NOINTERNET_RIV = 'assets/anim/nointernet.riv';
+
+  static const String defaultPfp = "assets/images/defaultPfp.png";
 }

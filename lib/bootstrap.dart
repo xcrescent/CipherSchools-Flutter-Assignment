@@ -1,14 +1,18 @@
 import 'dart:async';
 import 'dart:developer';
+
+import 'package:assignment/core/local_storage/app_storage_pod.dart';
+import 'package:assignment/init.dart';
+import 'package:assignment/shared/riverpod_ext/riverpod_observer.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:platform_info/platform_info.dart';
-import 'package:assignment/core/local_storage/app_storage_pod.dart';
-import 'package:assignment/init.dart';
-import 'package:assignment/shared/riverpod_ext/riverpod_observer.dart';
 import 'package:talker_flutter/talker_flutter.dart';
+
+import 'firebase_options.dart';
 
 // coverage:ignore-file
 
@@ -44,6 +48,9 @@ Future<void> bootstrap(
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
   WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   unawaited(init());
   await Hive.initFlutter();
   final appBox = await Hive.openBox('appBox');

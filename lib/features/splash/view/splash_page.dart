@@ -1,20 +1,33 @@
-import 'dart:async';
-
+import 'package:assignment/features/auth/repository/auth_repository.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @RoutePage(
   deferredLoading: true,
 )
-class SplashPage extends StatelessWidget {
+class SplashPage extends ConsumerWidget {
   const SplashPage({super.key});
-  
+
   @override
-  Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 2), () {
-      context.router.replaceNamed('/getting-started');
-    });
+  Widget build(BuildContext context, WidgetRef ref) {
+    () async {
+      SharedPreferences sharedPref =
+          await ref.read(sharedPreferencesProvider.future);
+      final uid = sharedPref.getString('uid');
+      if (uid != null) {
+        Future.delayed(const Duration(milliseconds: 2000), () {
+          context.router.replaceNamed('/navigation');
+        });
+      } else {
+        Future.delayed(const Duration(milliseconds: 2000), () {
+          context.router.replaceNamed('/getting-started');
+        });
+      }
+    }();
+
     return Scaffold(
       backgroundColor: const Color(0xff7B61FF),
       body: SizedBox(
@@ -42,6 +55,7 @@ class SplashPage extends StatelessWidget {
                     'CipherX',
                     style: TextStyle(
                       fontSize: 30,
+                      color: Colors.white,
                       fontFamily: GoogleFonts.brunoAceSc().fontFamily,
                     ),
                   ),
