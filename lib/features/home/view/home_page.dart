@@ -48,8 +48,9 @@ class _HomePageState extends ConsumerState<HomePage>
           children: [
             const SizedBox(height: 16),
             _buildTabview(context),
+            const SizedBox(height: 16),
             SizedBox(
-              height: MediaQuery.of(context).size.height - 438,
+              height: MediaQuery.of(context).size.height - 423,
               width: MediaQuery.of(context).size.width,
               child: TabBarView(
                 controller: tabviewController,
@@ -162,7 +163,6 @@ class _HomePageState extends ConsumerState<HomePage>
               horizontal: 15,
               vertical: 12,
             ),
-            // decoration: AppDecoration.border,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -207,11 +207,8 @@ class _HomePageState extends ConsumerState<HomePage>
               left: 10,
               right: 28,
             ),
-            child: _buildFrameSixRow(
+            child: _buildTransaction(
               context,
-              color: const Color(0xffFCAC12),
-              backgroundColor: const Color(0xffFCEED4),
-              imagePath: "assets/images/img_magicons_glyph_ecommerce.svg",
               title: AppLocalizations.of(context).lbl_shopping,
               description: AppLocalizations.of(context).msg_buy_some_grocery,
               price: AppLocalizations.of(context).lbl_120,
@@ -224,11 +221,8 @@ class _HomePageState extends ConsumerState<HomePage>
               left: 10,
               right: 28,
             ),
-            child: _buildFrameSixRow(
+            child: _buildTransaction(
               context,
-              color: const Color(0xffFCAC12),
-              backgroundColor: const Color(0xffFCEED4),
-              imagePath: "assets/images/img_magicons_glyph_primary.svg",
               title: AppLocalizations.of(context).lbl_subscription,
               description: AppLocalizations.of(context).msg_disney_annual,
               price: AppLocalizations.of(context).lbl_499,
@@ -241,11 +235,8 @@ class _HomePageState extends ConsumerState<HomePage>
               left: 10,
               right: 28,
             ),
-            child: _buildFrameSixRow(
+            child: _buildTransaction(
               context,
-              color: const Color(0xffFCAC12),
-              backgroundColor: const Color(0xffFCEED4),
-              imagePath: "assets/images/img_magicons_glyph_ecommerce.svg",
               title: AppLocalizations.of(context).lbl_travel,
               description: AppLocalizations.of(context).msg_chandigarh_to_de,
               price: AppLocalizations.of(context).lbl_1000,
@@ -258,11 +249,8 @@ class _HomePageState extends ConsumerState<HomePage>
               left: 10,
               right: 28,
             ),
-            child: _buildFrameSixRow(
+            child: _buildTransaction(
               context,
-              color: const Color(0xffFCAC12),
-              backgroundColor: const Color(0xffFCEED4),
-              imagePath: "assets/images/img_magicons_glyph_red_500.svg",
               title: AppLocalizations.of(context).lbl_food,
               description: AppLocalizations.of(context).lbl_buy_a_ramen,
               price: AppLocalizations.of(context).lbl_32,
@@ -275,11 +263,8 @@ class _HomePageState extends ConsumerState<HomePage>
               left: 10,
               right: 28,
             ),
-            child: _buildFrameSixRow(
+            child: _buildTransaction(
               context,
-              color: const Color(0xffFCAC12),
-              backgroundColor: const Color(0xffFCEED4),
-              imagePath: "assets/images/img_magicons_glyph_ecommerce.svg",
               title: AppLocalizations.of(context).lbl_shopping,
               description: AppLocalizations.of(context).msg_buy_some_grocery,
               price: AppLocalizations.of(context).lbl_120,
@@ -292,16 +277,34 @@ class _HomePageState extends ConsumerState<HomePage>
   }
 
   /// Common widget
-  Widget _buildFrameSixRow(
+  Widget _buildTransaction(
     BuildContext context, {
     required String title,
     required String description,
     required String price,
     required String time,
-    required String imagePath,
-    required Color color,
-    required Color backgroundColor,
   }) {
+    String imagePath = "assets/images/img_magicons_glyph_ecommerce.svg";
+    Color color = const Color(0xffFCAC12);
+    Color backgroundColor = const Color(0xffFCFCFC);
+    if (title == "Shopping") {
+      color = const Color(0xffFCAC12);
+      backgroundColor = const Color(0xffFCEED4);
+      imagePath = "assets/images/img_magicons_glyph_ecommerce.svg";
+    } else if (title == "Subscription") {
+      color = const Color(0xffFCAC12);
+      backgroundColor = const Color(0xffFCEED4);
+      imagePath = "assets/images/img_magicons_glyph_primary.svg";
+    } else if (title == "Travel") {
+      color = const Color(0xffFCAC12);
+      backgroundColor = const Color(0xffFCEED4);
+      imagePath = "assets/images/img_magicons_glyph_ecommerce.svg";
+    } else if (title == "Food") {
+      color = const Color(0xffFCAC12);
+      backgroundColor = const Color(0xffFCEED4);
+      imagePath = "assets/images/img_magicons_glyph_red_500.svg";
+    }
+
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 16,

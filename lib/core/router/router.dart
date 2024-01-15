@@ -1,5 +1,5 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:assignment/core/router/router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 
 /// This class used for defined routes and paths na dother properties
 @AutoRouterConfig()
@@ -23,9 +23,9 @@ class AppRouter extends $AppRouter {
       page: NavigationRoute.page,
       path: '/navigation',
     ),
-    // AutoRoute(
-    //   page: HomeRoute.page,
-    //   path: '/home',
-    // ),
+    AutoRoute(
+      page: AddExpenseIncomeRoute.page,
+      path: '/add_expense_income',
+    ),
   ];
 }
