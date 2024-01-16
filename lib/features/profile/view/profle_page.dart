@@ -1,4 +1,5 @@
 import 'package:assignment/features/auth/controller/auth_controller.dart';
+import 'package:assignment/features/auth/model/user_model.dart';
 import 'package:assignment/features/widgets/custom_icon_button.dart';
 import 'package:assignment/features/widgets/custom_image_view.dart';
 import 'package:assignment/l10n/l10n.dart';
@@ -6,6 +7,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../core/providers/firebase_provider.dart';
 
 @RoutePage()
 class ProfilePage extends ConsumerStatefulWidget {
@@ -19,6 +23,38 @@ class ProfilePage extends ConsumerStatefulWidget {
 }
 
 class ProfilePageState extends ConsumerState<ProfilePage> {
+  UserModel user = const UserModel(
+    name: 'Khushi Sharma',
+    profilePic: 'assets/images/img_rectangle_9.png',
+    uid: '',
+    isAuthenticated: "",
+  );
+  @override
+  void initState() {
+    () async {
+      user = await ref
+          .read(firestoreProvider)
+          .collection('users')
+          .doc(
+            await SharedPreferences.getInstance().then(
+              (value) => value.getString('uid'),
+            ),
+          )
+          .get()
+          .then(
+            (value) => UserModel(
+              name: value.data()!['name'],
+              profilePic: value.data()!['profilePic'],
+              uid: value.data()!['uid'],
+              isAuthenticated: value.data()!['isAuthenticated'],
+            ),
+          );
+      print(user);
+      setState(() {});
+    }();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -134,7 +170,7 @@ class ProfilePageState extends ConsumerState<ProfilePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomImageView(
-            imagePath: 'assets/images/img_rectangle_9.png',
+            imagePath: user.profilePic,
             height: 80,
             width: 80,
             radius: BorderRadius.circular(
@@ -161,7 +197,7 @@ class ProfilePageState extends ConsumerState<ProfilePage> {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  AppLocalizations.of(context).lbl_khushi_sharma,
+                  user.name,
                   style: TextStyle(
                     fontSize: 24,
                     fontFamily: GoogleFonts.inter().fontFamily,
@@ -210,6 +246,12 @@ class ProfilePageState extends ConsumerState<ProfilePage> {
     required String imagePath,
     void Function()? onTap,
   }) {
+    Color backgroundColor = const Color(0xffEEE5FF);
+    Color color = const Color(0xff7F3DFF);
+    if (settingsText == AppLocalizations.of(context).lbl_logout) {
+      backgroundColor = const Color(0xffFFE2E4);
+      color = const Color(0xffFD3C4A);
+    }
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -231,12 +273,12 @@ class ProfilePageState extends ConsumerState<ProfilePage> {
                 width: 52,
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: const Color(0xffEEE5FF),
+                  color: backgroundColor,
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: CustomImageView(
                   imagePath: imagePath,
-                  color: const Color(0xff7F3DFF),
+                  color: color,
                 ),
               ),
             ),
