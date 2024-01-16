@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/router/router.gr.dart';
+import '../../budget/view/budget_page.dart';
 import '../../transactions/view/transaction_page.dart';
 import '../../widgets/custom_floating_button.dart';
 
@@ -221,6 +222,8 @@ class HomeContainerScreenState extends ConsumerState<NavigationPage> {
         return const ProfilePage();
       case "/transaction":
         return const TransactionPage();
+      case "/budget":
+        return const BudgetPage();
       default:
         return const HomePage();
     }

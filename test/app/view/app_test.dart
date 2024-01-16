@@ -1,12 +1,12 @@
 import 'dart:typed_data';
 
-import 'package:assignment/features/splash/view/splash_page.dart';
+import 'package:assignment/core/local_storage/app_storage_pod.dart';
+import 'package:assignment/features/auth/view/splash_page.dart';
+import 'package:assignment/shared/pods/internet_checker_pod.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:assignment/core/local_storage/app_storage_pod.dart';
-import 'package:assignment/shared/pods/internet_checker_pod.dart';
 
 import '../../helpers/pump_app.dart';
 

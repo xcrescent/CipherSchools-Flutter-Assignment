@@ -14,8 +14,8 @@ import '../../widgets/custom_image_view.dart';
 @RoutePage(
   deferredLoading: true,
 )
-class TransactionPage extends ConsumerWidget {
-  const TransactionPage({Key? key}) : super(key: key);
+class BudgetPage extends ConsumerWidget {
+  const BudgetPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,7 +23,7 @@ class TransactionPage extends ConsumerWidget {
       backgroundColor: const Color(0xffFFFFFF),
       appBar: AppBar(
         title: Text(
-          'Transactions',
+          'Budget',
           style: TextStyle(
             fontFamily: GoogleFonts.inter().fontFamily,
             fontWeight: FontWeight.w600,
@@ -46,7 +46,7 @@ class TransactionPage extends ConsumerWidget {
               data: (data) {
                 if (data!.isEmpty) {
                   return const Center(
-                    child: Text("No Transaction"),
+                    child: Text("No Income"),
                   );
                 }
                 print(data);
@@ -55,25 +55,29 @@ class TransactionPage extends ConsumerWidget {
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 5,
-                          ),
-                          child: _buildTransaction(
-                            context,
-                            title: data[index].title,
-                            description: data[index].description,
-                            price: data[index].price,
-                            time: data[index].time,
-                            index: index,
-                            transactionType: data[index].transactionType,
-                            walletName: data[index].walletName,
-                            ref: ref,
-                          ),
-                        );
+                        if (data[index].transactionType ==
+                            TransactionType.income) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 5,
+                            ),
+                            child: _buildTransaction(
+                              context,
+                              title: data[index].title,
+                              description: data[index].description,
+                              price: data[index].price,
+                              time: data[index].time,
+                              index: index,
+                              transactionType: data[index].transactionType,
+                              walletName: data[index].walletName,
+                              ref: ref,
+                            ),
+                          );
+                        }
+                        return null;
                       },
-                      itemCount: data!.length),
+                      itemCount: data.length),
                 );
               },
               error: (error, stackTrace) {
