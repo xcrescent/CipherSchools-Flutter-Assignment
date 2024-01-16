@@ -3,7 +3,6 @@ import 'package:assignment/features/home/models/incomecomponent_item_model.dart'
 import 'package:assignment/features/home/notifier/home_tab_container_notifier.dart';
 import 'package:assignment/features/home/widgets/incomecomponent_item_widget.dart';
 import 'package:assignment/features/widgets/app_bar/appbar_leading_image.dart';
-import 'package:assignment/features/widgets/app_bar/appbar_title_dropdown.dart';
 import 'package:assignment/features/widgets/app_bar/custom_app_bar.dart';
 import 'package:assignment/features/widgets/custom_elevated_button.dart';
 import 'package:assignment/features/widgets/custom_icon_button.dart';
@@ -44,7 +43,7 @@ class _HomePageState extends ConsumerState<HomePage>
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(256),
+        preferredSize: Size.fromHeight(320),
         child: HomeAppBar(),
       ),
       body: SizedBox(
@@ -52,11 +51,11 @@ class _HomePageState extends ConsumerState<HomePage>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 16),
+            const SizedBox(height: 8),
             _buildTabview(context),
-            const SizedBox(height: 16),
+            // const SizedBox(height: 8),
             SizedBox(
-              height: MediaQuery.of(context).size.height - 423,
+              height: MediaQuery.of(context).size.height - 453,
               width: MediaQuery.of(context).size.width,
               child: TabBarView(
                 controller: tabviewController,
@@ -291,8 +290,8 @@ class _HomePageState extends ConsumerState<HomePage>
       backgroundColor = const Color(0xffFDD5D7);
       imagePath = "assets/images/img_magicons_glyph_red_500.svg";
     } else {
-      color = const Color(0xff7F3DFF);
-      backgroundColor = const Color(0xffEEE5FF);
+      color = const Color(0xff00A86B);
+      backgroundColor = const Color(0xffF1F1FA);
       imagePath = "assets/images/img_user_primary.svg";
     }
 
@@ -381,12 +380,14 @@ class _HomePageState extends ConsumerState<HomePage>
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    "${AppLocalizations.of(context).lbl} $price",
+                    "${transactionType == TransactionType.expense ? "-" : "+"} ${AppLocalizations.of(context).lbl} $price",
                     style: TextStyle(
                       fontSize: 16,
                       fontFamily: GoogleFonts.inter().fontFamily,
                       fontWeight: FontWeight.w600,
-                      color: const Color(0xffFD3C4A),
+                      color: transactionType == TransactionType.expense
+                          ? const Color(0xffFD3C4A)
+                          : const Color(0xff00A86B),
                     ),
                   ),
                   const SizedBox(height: 11),
@@ -412,6 +413,21 @@ class _HomePageState extends ConsumerState<HomePage>
     Navigator.pop(context);
   }
 }
+
+List monthList = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July"
+      "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
 
 class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const HomeAppBar({Key? key}) : super(key: key);
@@ -450,23 +466,32 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
               },
             ),
             centerTitle: true,
-            title: Consumer(
-              builder: (context, ref, _) {
-                return AppbarTitleDropdown(
-                  hintText: AppLocalizations.of(context).lbl_october,
-                  items: ref
-                          .watch(homeTabContainerNotifier)
-                          .homeTabContainerModelObj
-                          ?.dropdownItemList ??
-                      [],
-                  onTap: (value) {
-                    ref
-                        .read(homeTabContainerNotifier.notifier)
-                        .onSelected(value);
-                  },
-                );
-              },
+            title: Text(
+              monthList[DateTime.now().month - 1],
+              style: TextStyle(
+                fontSize: 14,
+                fontFamily: GoogleFonts.inter().fontFamily,
+                fontWeight: FontWeight.w500,
+                color: const Color(0xff292B2D),
+              ),
             ),
+            // Consumer(
+            //   builder: (context, ref, _) {
+            //     return AppbarTitleDropdown(
+            //       hintText: AppLocalizations.of(context).lbl_october,
+            //       items: ref
+            //               .watch(homeTabContainerNotifier)
+            //               .homeTabContainerModelObj
+            //               ?.dropdownItemList ??
+            //           [],
+            //       onTap: (value) {
+            //         ref
+            //             .read(homeTabContainerNotifier.notifier)
+            //             .onSelected(value);
+            //       },
+            //     );
+            //   },
+            // ),
             actions: const [
               IconButton(
                 icon: Icon(
@@ -477,7 +502,6 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
               ),
             ],
           ),
-          const SizedBox(height: 9),
           Text(
             AppLocalizations.of(context).lbl_account_balance,
             style: TextStyle(
@@ -488,18 +512,38 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
             ),
           ),
           const SizedBox(height: 6),
-          Text(
-            AppLocalizations.of(context).lbl_38000,
-            style: TextStyle(
-              fontSize: 40,
-              fontFamily: GoogleFonts.inter().fontFamily,
-              fontWeight: FontWeight.w700,
-              color: Theme.of(context).colorScheme.onPrimaryContainer,
-            ),
-          ),
+          ref.watch(totalBalanceProvider).when(
+                data: (data) => Text(
+                  "₹${data ?? 0}",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontFamily: GoogleFonts.inter().fontFamily,
+                    fontWeight: FontWeight.w700,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
+                ),
+                loading: () => Text(
+                  "₹0",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontFamily: GoogleFonts.inter().fontFamily,
+                    fontWeight: FontWeight.w700,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
+                ),
+                error: (error, stack) => Text(
+                  "₹0",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontFamily: GoogleFonts.inter().fontFamily,
+                    fontWeight: FontWeight.w700,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
+                ),
+              ),
           const SizedBox(height: 12),
           SizedBox(
-            height: 80,
+            height: 140,
             child: Consumer(
               builder: (context, ref, _) {
                 var incomeComponentItemList = [
@@ -544,8 +588,8 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
                         ),
                       ),
                 ];
-                if ((incomeComponentItemList[0].amountText!.length > 6 ||
-                    incomeComponentItemList[1].amountText!.length > 6)) {
+                if ((incomeComponentItemList[0].amountText!.length > 8 ||
+                    incomeComponentItemList[1].amountText!.length > 8)) {
                   return Column(
                     children: [
                       IncomeComponentItemWidget(
@@ -585,5 +629,5 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(64);
+  Size get preferredSize => const Size.fromHeight(340);
 }

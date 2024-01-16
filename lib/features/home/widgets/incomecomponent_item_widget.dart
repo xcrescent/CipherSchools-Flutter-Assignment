@@ -18,6 +18,7 @@ class IncomeComponentItemWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
+      height: 80,
       padding: const EdgeInsets.symmetric(
         horizontal: 11,
         vertical: 13,

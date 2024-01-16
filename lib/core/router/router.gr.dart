@@ -13,6 +13,8 @@ import 'dart:ui' as _i11;
 import 'package:assignment/features/add_expense_income/view/add_expense_income_page.dart'
     deferred as _i1;
 import 'package:assignment/features/auth/view/auth_page.dart' as _i2;
+import 'package:assignment/features/budget/view/budget_page.dart'
+    deferred as _i8;
 import 'package:assignment/features/getting_started/view/getting_started_page.dart'
     deferred as _i3;
 import 'package:assignment/features/home/view/home_page.dart' deferred as _i4;
@@ -21,8 +23,6 @@ import 'package:assignment/features/navigation/view/navigation_page.dart'
 import 'package:assignment/features/profile/view/profle_page.dart' as _i6;
 import 'package:assignment/features/splash/view/splash_page.dart'
     deferred as _i7;
-import 'package:assignment/features/transactions/view/transaction_page.dart'
-    deferred as _i8;
 import 'package:auto_route/auto_route.dart' as _i9;
 import 'package:flutter/material.dart' as _i10;
 

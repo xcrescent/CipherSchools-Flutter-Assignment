@@ -386,7 +386,7 @@ class AddExpenseIncomePage extends ConsumerWidget {
                             width: MediaQuery.of(context).size.width - 60,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF7F3DFF),
+                                backgroundColor: color,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
