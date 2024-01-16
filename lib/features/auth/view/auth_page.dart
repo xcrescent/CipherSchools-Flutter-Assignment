@@ -60,7 +60,7 @@ class AuthPage extends ConsumerWidget {
                       fillColor: const Color(0xffF5F5F5),
                       border: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(16),
+                          Radius.circular(24),
                         ),
                         borderSide: BorderSide(
                           width: 1,
@@ -86,7 +86,7 @@ class AuthPage extends ConsumerWidget {
                       fillColor: const Color(0xffF5F5F5),
                       border: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(32),
+                          Radius.circular(24),
                         ),
                         borderSide: BorderSide(
                           width: 1,
@@ -112,7 +112,7 @@ class AuthPage extends ConsumerWidget {
                       fillColor: const Color(0xffF5F5F5),
                       border: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(16),
+                          Radius.circular(24),
                         ),
                         borderSide: BorderSide(
                           width: 2,
@@ -209,7 +209,11 @@ class AuthPage extends ConsumerWidget {
                 minimumSize: Size(MediaQuery.of(context).size.width - 40, 48),
               ),
               onPressed: () {
-                context.router.pushNamed("/navigation");
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Please sign up using Google Account"),
+                  ),
+                );
               },
               child: Text(
                 "Sign Up",
