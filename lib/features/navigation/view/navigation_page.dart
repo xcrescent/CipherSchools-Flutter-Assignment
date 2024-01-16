@@ -5,8 +5,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/router/router.gr.dart';
+import '../../transactions/view/transaction_page.dart';
 import '../../widgets/custom_floating_button.dart';
 
 @RoutePage(
@@ -65,25 +67,22 @@ class HomeContainerScreenState extends ConsumerState<NavigationPage> {
                       ),
                     ),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        const Text(
+                        Text(
                           "Add Transaction",
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
+                            fontFamily: GoogleFonts.poppins().fontFamily,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 20,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             GestureDetector(
                               onTap: () {
+                                context.router.pop();
                                 context.router.push(
                                   AddExpenseIncomeRoute(
                                     color: const Color(0xFF0077FF),
@@ -108,11 +107,13 @@ class HomeContainerScreenState extends ConsumerState<NavigationPage> {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  const Text(
+                                  Text(
                                     "Expense",
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
+                                      fontFamily:
+                                          GoogleFonts.poppins().fontFamily,
                                     ),
                                   ),
                                 ],
@@ -120,6 +121,7 @@ class HomeContainerScreenState extends ConsumerState<NavigationPage> {
                             ),
                             GestureDetector(
                               onTap: () {
+                                context.router.pop();
                                 context.router.push(
                                   AddExpenseIncomeRoute(
                                     color: const Color(0xFF7B61FF),
@@ -144,11 +146,13 @@ class HomeContainerScreenState extends ConsumerState<NavigationPage> {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  const Text(
+                                  Text(
                                     "Income",
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
+                                      fontFamily:
+                                          GoogleFonts.poppins().fontFamily,
                                     ),
                                   ),
                                 ],
@@ -215,6 +219,8 @@ class HomeContainerScreenState extends ConsumerState<NavigationPage> {
         return const HomePage();
       case "/profile":
         return const ProfilePage();
+      case "/transaction":
+        return const TransactionPage();
       default:
         return const HomePage();
     }

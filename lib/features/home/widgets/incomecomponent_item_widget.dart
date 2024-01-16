@@ -1,23 +1,22 @@
 import 'package:assignment/features/widgets/custom_icon_button.dart';
 import 'package:assignment/features/widgets/custom_image_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../models/incomecomponent_item_model.dart';
 
-// ignore: must_be_immutable
-class IncomeComponentItemWidget extends StatelessWidget {
-  IncomeComponentItemWidget(
-    this.incomeComponentItemModelObj, {
+class IncomeComponentItemWidget extends ConsumerWidget {
+  const IncomeComponentItemWidget({
     Key? key,
-  }) : super(
-          key: key,
-        );
-
-  IncomeComponentItemModel incomeComponentItemModelObj;
+    required this.width,
+    required this.incomeComponentItemModelObj,
+  }) : super(key: key);
+  final double width;
+  final IncomeComponentItemModel incomeComponentItemModelObj;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 11,
@@ -34,9 +33,9 @@ class IncomeComponentItemWidget extends StatelessWidget {
           ),
         ],
       ),
-      width: 170,
+      width: width,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.only(
@@ -66,6 +65,13 @@ class IncomeComponentItemWidget extends StatelessWidget {
               ),
             ),
           ),
+          width > 170
+              ? const SizedBox(
+                  width: 10,
+                )
+              : SizedBox(
+                  width: 0,
+                ),
           Padding(
             padding: const EdgeInsets.only(
               left: 10,

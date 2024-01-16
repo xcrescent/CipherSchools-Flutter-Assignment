@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-/// This class is used in the [incomecomponent_item_widget] screen.
 class IncomeComponentItemModel {
   IncomeComponentItemModel({
     this.userImage,

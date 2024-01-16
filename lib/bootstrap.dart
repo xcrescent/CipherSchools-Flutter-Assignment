@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:assignment/core/local_storage/app_storage_pod.dart';
+import 'package:assignment/features/add_expense_income/model/transaction_model.dart';
 import 'package:assignment/init.dart';
 import 'package:assignment/shared/riverpod_ext/riverpod_observer.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -53,6 +54,9 @@ Future<void> bootstrap(
   );
   unawaited(init());
   await Hive.initFlutter();
+  Hive.registerAdapter(TransactionModelAdapter());
+  Hive.registerAdapter(TransactionTypeAdapter());
+  await Hive.openBox<TransactionModel>('transaction_data');
   final appBox = await Hive.openBox('appBox');
 
   runApp(
